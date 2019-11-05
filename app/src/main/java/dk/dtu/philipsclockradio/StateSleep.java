@@ -27,13 +27,13 @@ public class StateSleep extends StateAdapter {
             sleepTimerCounter++;
         }
     }
-
+//
     @Override
     public void onEnterState(ContextClockradio context) {
         context.ui.setDisplayText(""+120);
         context.ui.turnOnLED(3);
         sleepTimerCounter++;
-        
+
 
     }
 }
