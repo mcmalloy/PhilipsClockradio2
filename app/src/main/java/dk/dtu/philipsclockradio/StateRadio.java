@@ -3,12 +3,22 @@ package dk.dtu.philipsclockradio;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class StateRadio extends StateAdapter {
-    static double freq;
-
+    static double freq=90;
+    static int radioToggle=0;
     // TODO: Kunne skifte mellem FM/AM radio
     @Override
     public void onClick_Power(ContextClockradio context) {
         context.setState(new StateRadio());
+        if(radioToggle==0){
+            freq=90;
+            context.ui.setDisplayText(""+freq);
+            radioToggle=1;
+        }
+        else if(radioToggle==1){
+            freq=100.0;
+            context.ui.setDisplayText(""+freq);
+            radioToggle=0;
+        }
     }
 
     @Override
@@ -18,9 +28,9 @@ public class StateRadio extends StateAdapter {
 
     @Override
     public void onEnterState(ContextClockradio context) {
-        freq = 90.0;
+        System.out.println("STATE: "+radioToggle);
         context.ui.toggleRadioPlaying();
-        context.ui.setDisplayText(""+freq);
+        context.ui.setDisplayText(""+90.0);
         // context.ui.turnOnLED(1);
     }
 
@@ -70,10 +80,6 @@ public class StateRadio extends StateAdapter {
     @Override
     public void onLongClick_Preset(ContextClockradio context) {
         // Save channel
-
-
-
-
-
     }
+
 }
