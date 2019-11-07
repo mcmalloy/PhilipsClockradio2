@@ -13,6 +13,13 @@ public class ContextClockradio {
     public static MainUI ui;
     public static ChannelSaveSingleton data;
 
+    ChannelSaveSingleton channelPreset;
+    AlarmSaveSingleton alarm;
+
+    {
+        alarm = new AlarmSaveSingleton();
+    }
+
     public ContextClockradio(MainUI context){
         ui = context;
 
